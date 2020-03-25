@@ -78,25 +78,19 @@ public class Main {
 // *********************************************************************
   @RequestMapping(value="/update", method= RequestMethod.GET)
   @ResponseBody
-  public String update() {
+  public String update() throws Exception {
+    RetrieveStoreData pullUpdate = new RetrieveStoreData();
+    pullUpdate.RetrieveStoreData();
     DbInterface testItem = new DbInterface();
     String returnJson = testItem.retrieveLatest("single");
     return returnJson;
-//    return "{\"cases\":\"" + printItem.getCases() + "\"," +
-//           "\"losses\":\"" + printItem.getDeaths() + "\"," +
-//           "\"recovered\":\"" + printItem.getRecovered() + "\"," +
-//           "\"updated\":\"" + printItem.getUpdated() + "\"}";
-            //printItem;
-//            printItem.getCases() + "\n"
-//                    + "   Losses | " + printItem.getDeaths() + "\n"
-//                    + "Recovered | " + printItem.getRecovered() + "\n"
-//                    + "  Updated | " + printItem.getUpdated() + "\n\n");
-//    return accountManager.getAllAccounts();
   }
 
   @RequestMapping(value="/updates", method= RequestMethod.GET)
   @ResponseBody
-  public String updates() {
+  public String updates() throws Exception {
+    RetrieveStoreData pullUpdate = new RetrieveStoreData();
+    pullUpdate.RetrieveStoreData();
     DbInterface testItem = new DbInterface();
     String returnJson = testItem.retrieveLatest("all");
     return returnJson;
