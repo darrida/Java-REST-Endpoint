@@ -54,16 +54,15 @@ class RetrieveStoreData {
                                                          jsonResponse.getFloat("updated"));
                     DbInterface testItem = new DbInterface();
                     testItem.insert("../../updates.db", update.getCases(), update.getDeaths(), update.getRecovered(), update.getUpdated());
-                    Covid19Class printItem = testItem.retrieveLatest();
-
-                    System.out.print("   \nGLOBAL\n"
-                            + "----------|----------------\n"
-                            + "    Cases | " + printItem.getCases() + "\n"
-                            + "   Losses | " + printItem.getDeaths() + "\n"
-                            + "Recovered | " + printItem.getRecovered() + "\n"
-                            + "  Updated | " + printItem.getUpdated() + "\n\n");
+//                    Covid19Class printItem = testItem.retrieveLatest();
+//
+//                    System.out.print("   \nGLOBAL\n"
+//                            + "----------|----------------\n"
+//                            + "    Cases | " + printItem.getCases() + "\n"
+//                            + "   Losses | " + printItem.getDeaths() + "\n"
+//                            + "Recovered | " + printItem.getRecovered() + "\n"
+//                            + "  Updated | " + printItem.getUpdated() + "\n\n");
 
                 }
             }
         }
-     }

@@ -1,4 +1,4 @@
-package App;
+package com.example;
 
 //import standard
 import java.io.*;
