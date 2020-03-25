@@ -18,19 +18,19 @@
     <div class="col-md-6">
       <h3><span class="glyphicon glyphicon-info-sign"></span> How this works</h3>
       <ul>
-        <li>Functionality:</li>
+        <li><b>Functionality:</b></li>
         <ul>
-          <li>Step 1: A GET request to <a href="https://corona.lmao.ninja/all">https://corona.lmao.ninja/all</a> to pull current global numbers for cases, losses, recovered, and the current date.</li>
-          <li>Step 2: The JSON from the request is parsed into a class that transforms the date format from the API endpoint into a human readable string.</li>
-          <li>Step 3: The transformed data from the class is inserted into a SQLite database.</li>
-          <li>Step 4: The data in the database is made available via two REST endpoints ("/update" pulls the most recent record; "/updates" pulls all records).</li>
-          <li>Step 5: When a request is made to one of the two endpoints the data is pulled from the database, transformed into a JSON string using a StringBuilder, then returned to the requester.</li>
-          <li>NOTE: Rather than create a scheduled task to routinely poll <a href="https://corona.lmao.ninja/all">https://corona.lmao.ninja/all</a>, an update is pulled each time a GET request is made to this application. The intention is to use it with an existing website that will pull from this application at regular intervals.</li>
+          <li><b>Step 1:</b> A GET request is made to <a href="https://corona.lmao.ninja/all">https://corona.lmao.ninja/all</a> to pull the current global status for cases, losses, recovered, and the current date.</li>
+          <li><b>Step 2:</b> The JSON from the request is parsed into a class that transforms the date format into a human readable string.</li>
+          <li><b>Step 3:</b> The class data is inserted into a SQLite database.</li>
+          <li><b>Step 4:</b> The data in the database is made available via two REST endpoints ("/update" pulls the most recent record; "/updates" pulls all records).</li>
+          <li><b>Step 5:</b> When a request is made to one of the two endpoints the data is pulled from the database, transformed into a JSON string using a StringBuilder, then returned to the requester.</li>
+          <li><b>NOTE:</b> Rather than create a scheduled task to routinely poll <a href="https://corona.lmao.ninja/all">https://corona.lmao.ninja/all</a>, an update is pulled each time a GET request is made to this application. The intention is to use it with an existing website that will pull from this application at regular intervals.</li>
         </ul>
-        <li>Deployment: This Java app was deployed to Heroku using a GitHub => Heroku connection.</li>
-        <li>Framework: Spring Web Framework</li>
-        <li>Build Framework: Maven</li>
-        <li>Foundation of Java application and this website: The Java application is based off of <a href="https://github.com/heroku/java-getting-started">Heroku's sample Java app</a>. Extensive modifications were made to the original foundation. No functionality originally existed related to making GET requests, JSON parsing and transformation, SQLite, or hosting REST endpoints.</li>
+        <li><b>Deployment:</b> Heroku using a GitHub => Heroku connection.</li>
+        <li><b>Web Framework:</b> Spring</li>
+        <li><b>Build Framework:</b> Maven</li>
+        <li><b>Foundation:</b> The Java application is based off of <a href="https://github.com/heroku/java-getting-started">Heroku's sample Java app</a>. Extensive modifications were made to the original foundation. No functionality originally existed related to making GET requests, JSON parsing and transformation, SQLite, or hosting REST endpoints.</li>
       </ul>
     </div>
   </div> <!-- row -->
