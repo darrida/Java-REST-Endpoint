@@ -1,3 +1,19 @@
+/*
+ * Copyright 2002-2014 the original author or authors.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package com.example;
 
 import com.zaxxer.hikari.HikariConfig;
@@ -8,10 +24,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
@@ -20,7 +35,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Map;
-import java.util.concurrent.atomic.AtomicLong;
 
 @Controller
 @SpringBootApplication
@@ -61,7 +75,24 @@ public class Main {
       return "error";
     }
   }
-
+// *********************************************************************
+  @RequestMapping(value="/update", method= RequestMethod.GET)
+  @ResponseBody
+  public String updates() {
+    DbInterface testItem = new DbInterface();
+    Covid19Class printItem = testItem.retrieveLatest();
+    return "{\"cases\":\"" + printItem.getCases() + "\"," +
+           "\"losses\":\"" + printItem.getDeaths() + "\"," +
+           "\"recovered\":\"" + printItem.getRecovered() + "\"," +
+           "\"updated\":\"" + printItem.getUpdated() + "\"}";
+            //printItem;
+//            printItem.getCases() + "\n"
+//                    + "   Losses | " + printItem.getDeaths() + "\n"
+//                    + "Recovered | " + printItem.getRecovered() + "\n"
+//                    + "  Updated | " + printItem.getUpdated() + "\n\n");
+//    return accountManager.getAllAccounts();
+  }
+// *********************************************************************
   @Bean
   public DataSource dataSource() throws SQLException {
     if (dbUrl == null || dbUrl.isEmpty()) {
@@ -70,29 +101,6 @@ public class Main {
       HikariConfig config = new HikariConfig();
       config.setJdbcUrl(dbUrl);
       return new HikariDataSource(config);
-    }
-  }
-
-  @RestController
-  public class GreetingController {
-
-//    //private static final String template = "Hello, %s!";
-//    private final AtomicLong counter = new AtomicLong();
-//
-//    @GetMapping("/greeting")
-//    public Greeting greeting(@RequestParam(value = "name", defaultValue = "World") String name) {
-//      return new Greeting(counter.incrementAndGet(), String.format(template, name));
-//    }
-    @GetMapping("/update")
-    public String update() {
-      DbInterface testItem = new DbInterface();
-      Covid19Class printItem = testItem.retrieveLatest();
-      return String.format(String.valueOf(printItem)
-//              printItem.getCases() + "\n"
-//                      + "   Losses | " + printItem.getDeaths() + "\n"
-//                      + "Recovered | " + printItem.getRecovered() + "\n"
-//                      + "  Updated | " + printItem.getUpdated() + "\n\n");
-      );
     }
   }
 
