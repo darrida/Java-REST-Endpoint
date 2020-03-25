@@ -1,5 +1,7 @@
 package com.example;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.sql.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -43,7 +45,7 @@ class DbInterface {
         }
     }
 
-    public Covid19Class retrieveLatest() {
+    public String retrieveLatest(String option) {
         Connection conn = null;
         Statement stmt = null;
         ResultSet rs, rsMaxId;
@@ -58,26 +60,56 @@ class DbInterface {
             // *****************************************************
             conn.setAutoCommit(false);
 
-            stmt = conn.createStatement();
 
-            sqlMaxId = "SELECT MAX(id) FROM updates";
-            rsMaxId = stmt.executeQuery(sqlMaxId);
-            while(rsMaxId.next()) {
-                MaxId = rsMaxId.getString(1);
-            }
-            sql = "SELECT * FROM updates WHERE id = " + MaxId + ";";
-            rs = stmt.executeQuery(sql);
-            while(rs.next()){
-                Covid19Class retrievalItem = new Covid19Class(rs.getString(2),  // cases
-                                                            rs.getString(3),  // losses
-                                                            rs.getString(4),  // recovered
-                                                            rs.getString(5)); // date
-                return retrievalItem;
-            }
 
-            stmt.close();
-            conn.commit();
-            conn.close();
+            if (option == "single") {
+                stmt = conn.createStatement();
+                sqlMaxId = "SELECT MAX(id) FROM updates";
+                rsMaxId = stmt.executeQuery(sqlMaxId);
+                while (rsMaxId.next()) {
+                    MaxId = rsMaxId.getString(1);
+                }
+                sql = "SELECT * FROM updates WHERE id = " + MaxId + ";";
+                rs = stmt.executeQuery(sql);
+                StringBuilder returnStr = new StringBuilder();
+                //returnStr.append("{");
+                while (rs.next()) {
+                    returnStr.append("{\"cases\":\"" + rs.getString(2) + "\"," +
+                            "\"losses\":\"" + rs.getString(3) + "\"," +
+                            "\"recovered\":\"" + rs.getString(4) + "\"," +
+                            "\"updated\":\"" + rs.getString(5) + "\"}");
+                }
+                //returnStr.append("}");
+                stmt.close();
+                conn.close();
+                return returnStr.toString();
+            } else {
+                stmt = conn.createStatement();
+
+                sql = "SELECT * FROM updates ORDER BY date DESC;";
+                rs = stmt.executeQuery(sql);
+                StringBuilder returnStr = new StringBuilder();
+                returnStr.append("{");
+                int index = 0;
+                while (rs.next()) {
+                    index++;
+                    returnStr.append("\"" + index + "\": {\"cases\":\"" + rs.getString(2) + "\"," +
+                            "\"losses\":\"" + rs.getString(3) + "\"," +
+                            "\"recovered\":\"" + rs.getString(4) + "\"," +
+                            "\"updated\":\"" + rs.getString(5) + "\"},");
+                }
+                returnStr.toString();
+                String returnStrFinal = StringUtils.chop(returnStr.toString());
+                returnStrFinal += "}";
+                //returnStr.append("}");
+                stmt.close();
+                conn.close();
+                //return returnStr.toString();
+                return returnStrFinal;
+            }
+            //stmt.close();
+            //conn.commit();
+            //conn.close();
             // *****************************************************
 
         } catch (SQLException e) {

@@ -78,19 +78,28 @@ public class Main {
 // *********************************************************************
   @RequestMapping(value="/update", method= RequestMethod.GET)
   @ResponseBody
-  public String updates() {
+  public String update() {
     DbInterface testItem = new DbInterface();
-    Covid19Class printItem = testItem.retrieveLatest();
-    return "{\"cases\":\"" + printItem.getCases() + "\"," +
-           "\"losses\":\"" + printItem.getDeaths() + "\"," +
-           "\"recovered\":\"" + printItem.getRecovered() + "\"," +
-           "\"updated\":\"" + printItem.getUpdated() + "\"}";
+    String returnJson = testItem.retrieveLatest("single");
+    return returnJson;
+//    return "{\"cases\":\"" + printItem.getCases() + "\"," +
+//           "\"losses\":\"" + printItem.getDeaths() + "\"," +
+//           "\"recovered\":\"" + printItem.getRecovered() + "\"," +
+//           "\"updated\":\"" + printItem.getUpdated() + "\"}";
             //printItem;
 //            printItem.getCases() + "\n"
 //                    + "   Losses | " + printItem.getDeaths() + "\n"
 //                    + "Recovered | " + printItem.getRecovered() + "\n"
 //                    + "  Updated | " + printItem.getUpdated() + "\n\n");
 //    return accountManager.getAllAccounts();
+  }
+
+  @RequestMapping(value="/updates", method= RequestMethod.GET)
+  @ResponseBody
+  public String updates() {
+    DbInterface testItem = new DbInterface();
+    String returnJson = testItem.retrieveLatest("all");
+    return returnJson;
   }
 // *********************************************************************
   @Bean
