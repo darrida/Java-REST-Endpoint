@@ -14,6 +14,6 @@ This is a simple, proof of concept, REST API Java application. (1) Performs GET 
 - **Deployment:** Heroku using a GitHub => Heroku connection.
 - **Web Framework:** Spring
 - **Build Framework:** Maven
-- **Foundation:** The Java application is based off of Heroku's sample Java app. Extensive modifications were made to the original foundation. No functionality originally existed related to making GET requests, JSON parsing and transformation, SQLite, or hosting REST endpoints.
+- **Foundation:** The Java application is based off of [Heroku's sample Java app]Heroku's sample Java app. Extensive modifications were made to the original foundation. No functionality originally existed related to making GET requests, JSON parsing and transformation, SQLite, or hosting REST endpoints.
 
 [Heroku's sample Java app]: (https://github.com/heroku/java-getting-started)
