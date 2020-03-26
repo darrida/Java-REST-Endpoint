@@ -1,6 +1,6 @@
-# java-getting-started
+# Covid-19 Global Stats Updates (Sample Java REST Endpoint)
 
-A barebones Java app, which can easily be deployed to Heroku.
+This is a simple, proof of concept, REST API Java application. (1) Performs GET request on a remote endpoint. (2) A simple class parses the JSON, transforms a date field to be human readable, inserts into a SQLite database. (3) Data is made available via a Java based hosted REST endpoint.
 
 This application supports the [Getting Started with Java on Heroku](https://devcenter.heroku.com/articles/getting-started-with-java) article - check it out.
 
