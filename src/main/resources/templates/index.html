@@ -10,8 +10,8 @@
     <p>This is a simple, proof of concept, REST API Java application. For details on functionality see "How this works" further below. Use the the buttons for samples of response data from the endpoints.
     <br><br>
     For source code, see Github: <a href="https://github.com/darrida/Java-REST-Endpoint">Java REST Endpoint.</a></p>
-    <a type="button" class="btn btn-lg btn-primary" href="https://java-test-bh.herokuapp.com/update"><span class="glyphicon glyphicon-tag"></span>&nbsp;&nbsp;GET single example</a>
-    <a type="button" class="btn btn-lg btn-primary" href="https://java-test-bh.herokuapp.com/updates"><span class="glyphicon glyphicon-tags"></span>&nbsp;&nbsp;GET all example</a>
+    <a type="button" class="btn btn-lg btn-primary" href="https://java-rest-endpoint-covid19.herokuapp.com/update"><span class="glyphicon glyphicon-tag"></span>&nbsp;&nbsp;GET single example</a>
+    <a type="button" class="btn btn-lg btn-primary" href="https://java-rest-endpoint-covid19.herokuapp.com/updates"><span class="glyphicon glyphicon-tags"></span>&nbsp;&nbsp;GET all example</a>
   </div>
 </div>
 <div class="container">
@@ -22,11 +22,11 @@
       <ul>
         <li><b>Latest Record from Database:</b>
           <code>
-            https://java-test-bh.herokuapp.com/update
+            https://java-rest-endpoint-covid19.herokuapp.com/update
           </code>
         <li><b>All Records from Database:</b>
           <code>
-            https://java-test-bh.herokuapp.com/updats
+            https://java-rest-endpoint-covid19.herokuapp.com/updats
           </code>
         <li><b>Authentication:</b> None</li>
         <li><b>Headers:</b> None</li>
@@ -37,7 +37,7 @@
 from pprint import pprint
 import json
 
-result = requests.get('http://java-test-bh.herokuapp.com/updates')
+result = requests.get('http://java-rest-endpoint-covid19.herokuapp.com/updates')
 pprint(result.json())</code></pre>
       <br>
       <h3><span class="glyphicon glyphicon-info-sign"></span> How this works</h3>
