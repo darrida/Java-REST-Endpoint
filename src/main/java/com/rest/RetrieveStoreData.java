@@ -1,16 +1,12 @@
-package com.example;
+package com.rest;
 
 //import standard
 import java.io.*;
-import java.text.SimpleDateFormat;
-import java.util.*;
 
 //import third party
 import org.json.*;
 import org.apache.hc.client5.http.ClientProtocolException;
-import org.apache.hc.client5.http.classic.HttpClient;
 import org.apache.hc.client5.http.classic.methods.HttpGet;
-import org.apache.hc.client5.http.classic.methods.HttpUriRequest;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
 import org.apache.hc.client5.http.impl.classic.HttpClients;
 import org.apache.hc.core5.http.*;

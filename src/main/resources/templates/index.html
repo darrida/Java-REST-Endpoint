@@ -7,7 +7,7 @@
   <div class="container">
     <h1>Covid-19 Global Stats Updates</h1>
     <h2>Sample Java REST Endpoint</h2>
-    <p>This is a simple, proof of concept, REST API Java application. For details on functionality, see "How this works further below. Use the the buttons for samples of response data from the endpoints."</p>
+    <p>This is a simple, proof of concept, REST API Java application. For details on functionality, see "How this works" further below. Use the the buttons for samples of response data from the endpoints.</p>
     <a type="button" class="btn btn-lg btn-primary" href="https://java-test-bh.herokuapp.com/update"><span class="glyphicon glyphicon-tag"></span>&nbsp;&nbsp;GET single example</a>
     <a type="button" class="btn btn-lg btn-primary" href="https://java-test-bh.herokuapp.com/updates"><span class="glyphicon glyphicon-tags"></span>&nbsp;&nbsp;GET all example</a>
   </div>
@@ -16,6 +16,28 @@
   <hr>
   <div class="row">
     <div class="col-md-6">
+      <h3><span class="glyphicon glyphicon-info-sign"></span> Endpoint Specification:</h3>
+      <ul>
+        <li><b>Latest Record from Database:</b>
+          <code>
+            https://java-test-bh.herokuapp.com/update
+          </code>
+        <li><b>All Records from Database:</b>
+          <code>
+            https://java-test-bh.herokuapp.com/updats
+          </code>
+        <li><b>Authentication:</b> None</li>
+        <li><b>Headers:</b> None</li>
+      </ul>
+      <br>
+      <h3><span class="glyphicon glyphicon-info-sign"></span> HTTP GET Request Sample using Python</h3>
+      <pre><code>import requests
+from pprint import pprint
+import json
+
+result = requests.get('http://java-test-bh.herokuapp.com/updates')
+pprint(result.json())</code></pre>
+      <br>
       <h3><span class="glyphicon glyphicon-info-sign"></span> How this works</h3>
       <ul>
         <li><b>Functionality:</b></li>
@@ -31,6 +53,7 @@
         <li><b>Web Framework:</b> Spring</li>
         <li><b>Build Framework:</b> Maven</li>
         <li><b>Foundation:</b> The Java application is based off of <a href="https://github.com/heroku/java-getting-started">Heroku's sample Java app</a>. Extensive modifications were made to the original foundation. No functionality originally existed related to making GET requests, JSON parsing and transformation, SQLite, or hosting REST endpoints.</li>
+        <li><b>Development Environment:</b> Intellij IDEA Community Edition (running on Ubuntu 18.04)</li>
       </ul>
     </div>
   </div> <!-- row -->
