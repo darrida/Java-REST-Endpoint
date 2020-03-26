@@ -19,6 +19,7 @@ class RetrieveStoreData {
 
         try (final CloseableHttpClient httpclient = HttpClients.createDefault()) {
                     final HttpGet httpget = new HttpGet("https://corona.lmao.ninja/all");
+//                    final HttpGet httpget = new HttpGet("https://coronavirus-tracker-api.herokuapp.com/v2/latest");
 
         //            // Create a custom response handler
                     final HttpClientResponseHandler<String> responseHandler = new HttpClientResponseHandler<String>() {
