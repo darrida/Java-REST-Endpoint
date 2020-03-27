@@ -1,6 +1,6 @@
 # Covid-19 Global Stats Updates (Sample Java REST Endpoint)
 
-This is a simple, proof of concept, REST API Java application. (1) Performs GET request on a remote endpoint. (2) A simple class parses the JSON, transforms a date field to be human readable, inserts into a SQLite database. (3) Data is made available via a Java based hosted REST endpoint.
+This is a simple, proof of concept, REST API Java application.
 
 ### Functionality:
 - **Step 1:** A GET request is made to https://corona.lmao.ninja/all to pull the current global status for cases, losses, recovered, and the current date.
