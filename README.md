@@ -4,7 +4,7 @@ This is a simple, proof of concept, REST API Java application. For details on fu
 
 ### Endpoint Specification:
 - **Latest Record from Database:** https://java-rest-endpoint-covid19.herokuapp.com/update
-- **All Records from Database:** https://java-rest-endpoint-covid19.herokuapp.com/updats
+- **All Records from Database:** https://java-rest-endpoint-covid19.herokuapp.com/updates
 - **Authentication:** None
 - **Headers:** None
 
